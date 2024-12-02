@@ -4,9 +4,7 @@
 /* Clipboard */
 const std::string qfSystem::gClipboardData() {
   if (!OpenClipboard(nullptr)) {
-#ifdef _qfDebugLevel <= _qfDebugLevelCritical 
-    _qfDebugLog(_qfDebugWarning, "Could not open clipboard");
-#endif 
+    _qfLogIf(_qfDebugLevelCritical, _qfDebugLog(_qfDebugWarning, "Could not open clipboard"));
     return _qfEmptyString;
   }
 
@@ -15,9 +13,7 @@ const std::string qfSystem::gClipboardData() {
   /* Get clipboard data */
   HANDLE handleData = GetClipboardData(CF_TEXT);
   if (handleData == nullptr) {
-#ifdef _qfDebugLevel <= _qfDebugLevelCritical 
-    _qfDebugLog(_qfDebugWarning, "Could not get clipboard data");
-#endif
+    _qfLogIf(_qfDebugLevelCritical, _qfDebugLog(_qfDebugWarning, "Could not get clipboard data"));
     return _qfEmptyString;
   }
 
@@ -25,18 +21,14 @@ const std::string qfSystem::gClipboardData() {
   char* pszText = static_cast<char*>(GlobalLock(handleData));
 
   if (pszText == nullptr) {
-#ifdef _qfDebugLevel <= _qfDebugLevelCritical 
-    _qfDebugLog(_qfDebugWarning, "Could not lock memory");
-#endif
+    _qfLogIf(_qfDebugLevelCritical, _qfDebugLog(_qfDebugWarning, "Could not lock memory"));
     return _qfEmptyString;
   }
   /* Copy text from clipboard & release locks */
   const std::string clipboardText = pszText;
   GlobalUnlock(handleData);
 
-#ifdef _qfDebugLevel <= _qfDebugLevelRegular
-  _qfDebugLog(_qfDebugMessage, "success");
-#endif 
+  _qfLogIf(_qfDebugLevelRegular, _qfDebugLog(_qfDebugMessage, "success"));
 
   return clipboardText;
 }
@@ -53,9 +45,8 @@ const bool qfSystem::sClipboardData(const std::string& _Buffer) {
   const size_t bufferSizeFixed = (_Buffer.size() + 1);
 
   if (!EmptyClipboard()) {
-#ifdef _qfDebugLevel <= _qfDebugLevelCritical 
-    _qfDebugLog(_qfDebugWarning, "Could not empty clipboard");
-#endif
+    _qfLogIf(_qfDebugLevelCritical, _qfDebugLog(_qfDebugWarning, "Could not empty clipboard"));
+
     return false;
   }
 
@@ -63,18 +54,16 @@ const bool qfSystem::sClipboardData(const std::string& _Buffer) {
   HGLOBAL handleGlobal = GlobalAlloc(GMEM_MOVEABLE, bufferSizeFixed);
 
   if (handleGlobal == nullptr) {
-#ifdef _qfDebugLevel <= _qfDebugLevelCritical 
-    _qfDebugLog(_qfDebugWarning, "Could not allocate memory");
-#endif
+    _qfLogIf(_qfDebugLevelCritical, _qfDebugLog(_qfDebugWarning, "Could not allocate memory"));
+
     return false;
   }
 
   char* pGlobal = static_cast<char*>(GlobalLock(handleGlobal));
 
   if (pGlobal == nullptr) {
-#ifdef _qfDebugLevel <= _qfDebugLevelCritical 
-    _qfDebugLog(_qfDebugWarning, "Could not lock memory");
-#endif
+    _qfLogIf(_qfDebugLevelCritical, _qfDebugLog(_qfDebugWarning, "Could not lock memory"));
+
     return false;
   }
 
@@ -85,16 +74,14 @@ const bool qfSystem::sClipboardData(const std::string& _Buffer) {
 
   /* Place the handle on the clipboard for CF_TEXT format */
   if (SetClipboardData(CF_TEXT, handleGlobal) == nullptr) {
-#ifdef _qfDebugLevel <= _qfDebugLevelCritical 
-    _qfDebugLog(_qfDebugWarning, "Could not place handle on clipboard");
-#endif
+    _qfLogIf(_qfDebugLevelCritical, _qfDebugLog(_qfDebugWarning, "Could not place handle on clipboard"));
+
     GlobalFree(handleGlobal);
     return false;
   }
   /* Close: RAII */
 
-#ifdef _qfDebugLevel <= _qfDebugLevelRegular
-  _qfDebugLog(_qfDebugMessage, "success");
-#endif 
+  _qfLogIf(_qfDebugLevelRegular, _qfDebugLog(_qfDebugMessage, "success"));
+
   return true;
 }

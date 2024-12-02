@@ -32,7 +32,11 @@
 	Transform things, for example std::string to uppercase 
 */
 #include "../src/QFTransform.h"
-/* QF Systme 
+/* QF System
 	Window's operations like: Clipboard
 */
 #include "../src/QFSystem.h"
+/* QF Color 
+	Simple color class based on glm::vec4 for performance, its always normalized to 0.0f-1.0f
+*/
+#include "../src/QFColor.h"
