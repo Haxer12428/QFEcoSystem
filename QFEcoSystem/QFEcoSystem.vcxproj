@@ -163,6 +163,9 @@
     <ClCompile Include="src\QFColor.cpp" />
     <ClCompile Include="src\QFDebug.cpp" />
     <ClCompile Include="src\QFFileSystem.cpp" />
+    <ClCompile Include="src\QFFilesystemOpen.cpp" />
+    <ClCompile Include="src\QFFileSystemOpenIO.cpp" />
+    <ClCompile Include="src\QFFilesystemOpenIOBufferString.cpp" />
     <ClCompile Include="src\QFFilesystemPath.cpp" />
     <ClCompile Include="src\QFSystem.cpp" />
     <ClCompile Include="src\QFTransform.cpp" />

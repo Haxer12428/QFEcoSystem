@@ -16,7 +16,7 @@
 #define _qfDebugLevelImportant 2
 #define _qfDebugLevelCritical 3
 
-#define _qfDebugLevel _qfDebugLevelImportant
+#define _qfDebugLevel _qfDebugLevelRegular
 
 /* WARNING: prints self and upper levels -> Should not use this anymore!
 	If u see something like this in the code change this to _qfLogIf -> newer, clearer version of this

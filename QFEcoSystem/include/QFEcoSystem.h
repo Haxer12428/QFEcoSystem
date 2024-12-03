@@ -1,4 +1,5 @@
 #pragma once
+#include <nlohmann/json.hpp>
 
 /* General purposes ecosystem
 	Utilites for qf
@@ -40,3 +41,7 @@
 	Simple color class based on glm::vec4 for performance, its always normalized to 0.0f-1.0f
 */
 #include "../src/QFColor.h"
+/* qfJson
+	Custom json wrapper in case of implementing something into it later on (extension)  
+*/
+using qfJson = nlohmann::json;

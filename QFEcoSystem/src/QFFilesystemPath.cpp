@@ -48,4 +48,8 @@ namespace qfFileSystem {
 		return false;
 	}
 
+	const std::string Path::getWithPrintFormat() const {
+		return fmt::format("_qfFileSystem::Path[{}]", this->string());
+	}
+
 }
