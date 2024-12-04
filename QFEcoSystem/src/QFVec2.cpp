@@ -13,7 +13,7 @@ qfVec2::operator glm::vec2() const { return m_Data; }
 float qfVec2::_x() const { return m_Data.x; };
 float qfVec2::_y() const { return m_Data.y; };
 
-const std::string qfVec2::gString() const {
+const std::string qfVec2::getString() const {
 	return fmt::format("qfVec2({}, {})", m_Data.x, m_Data.y);
 }
 
@@ -32,7 +32,7 @@ qfVec2 qfVec2::operator/(const qfVec2& _Other) const {
 }
 
 /* Checks */
-const bool qfVec2::isInBoundingBox2d(const qfVec2& _First, const qfVec2& _Last) const {
+const bool qfVec2::isIntersecting(const qfVec2& _First, const qfVec2& _Last) const {
 	return (
 		m_Data.x >= (
 		_First.m_Data.x < _Last.m_Data.x ? _First.m_Data.x : _Last.m_Data.x)

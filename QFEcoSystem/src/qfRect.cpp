@@ -18,8 +18,38 @@ qfVec2 qfRect::getPosition() const { return qfVec2{ m_Data.x, m_Data.y }; }
 qfVec2 qfRect::getSize() const { return qfVec2{ m_Data.z, m_Data.w }; }
 qfVec2 qfRect::getFinalPosition() const { return (getPosition() + getSize()); }
 
+/* those are used for get and set */
+float& qfRect::_x() { return m_Data.x; }
+float& qfRect::_y() { return m_Data.y; }
+float& qfRect::_sx() { return m_Data.z; }
+float& qfRect::_sy() { return m_Data.w; }
+
 /* Operators -> convertions */
 qfRect::operator _qfRectInternalDataType() const {
 	return m_Data;
 }
+/* Public -> Get's : conversions */
+const qfString qfRect::getString() const {
+	return fmt::format("qfRect({}, {}, {}, {})", m_Data.x, m_Data.y, m_Data.z, m_Data.w);
+}
+/* Public -> Checks */
 
+/* This should be valid for all scenarios;
+  Only scenario that's not implemented is roatetd rect's but it doens't belong here for now
+*/
+const bool qfRect::isIntersecting(const qfRect& r2) {
+  const qfVec2 pos1 = getPosition();  // Bottom-left corner of rect 1
+  const qfVec2 size1 = getSize();     // Width and height of rect 1
+  const qfVec2 finalPos1 = getFinalPosition(); // Top-right (or max boundary) of rect 1
+
+  const qfVec2 pos2 = r2.getPosition();  // Bottom-left corner of rect 2
+  const qfVec2 size2 = r2.getSize();     // Width and height of rect 2
+  const qfVec2 finalPos2 = r2.getFinalPosition(); // Top-right (or max boundary) of rect 2
+
+  // Check if rectangles are overlapping on X and Y axis
+  bool overlapX = (finalPos1._x() > pos2._x()) && (pos1._x() < finalPos2._x());
+  bool overlapY = (finalPos1._y() > pos2._y()) && (pos1._y() < finalPos2._y());
+
+  // If both axes are overlapping, the rectangles intersect
+  return overlapX && overlapY;
+}

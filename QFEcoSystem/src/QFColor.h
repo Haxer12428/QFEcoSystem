@@ -18,10 +18,10 @@ public:
 
 	operator ImColor() const; 
 
-	const std::string gString() const; 
+	const std::string getString() const; 
 
 	friend std::ostream& operator<<(std::ostream& _Os, const qfColor& _Clr) {
-		_Os << _Clr.gString(); return _Os;
+		_Os << _Clr.getString(); return _Os;
 	}
 private:
 	glm::vec<4, float, glm::defaultp> m_Value; 

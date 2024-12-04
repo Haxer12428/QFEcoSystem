@@ -11,6 +11,10 @@ namespace qfFileSystem {
 		return m_BufferVector;
 	}
 
+	Open::IO::BufferString::FlagEOL Open::IO::BufferString::getEOLFlag() {
+		return m_EOLFlag;
+	}
+
 	const qfString Open::IO::BufferString::getString() {
 		/* Return cached string if already calculated or buffer is empty */
 		if (m_BufferVector.empty() || !m_BufferString.empty()) return m_BufferString;

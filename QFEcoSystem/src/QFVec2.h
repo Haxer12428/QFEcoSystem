@@ -18,21 +18,21 @@ public:
 	qfVec2(float _x, float _y);
 	qfVec2(const glm::vec2& _Vec);
 
-	inline operator glm::vec2() const;
+	operator glm::vec2() const;
 
 	qfVec2 operator+(const qfVec2& _Other) const; 
 	qfVec2 operator-(const qfVec2& _Other) const;
 	qfVec2 operator*(const qfVec2& _Other) const;
 	qfVec2 operator/(const qfVec2& _Other) const;
 
-	inline float _x() const; 
-	inline float _y() const; 
+	float _x() const; 
+	float _y() const; 
 
-	inline const bool isInBoundingBox2d(const qfVec2& _First, const qfVec2& _Last) const; 
-	const std::string gString() const; 
+	const bool isIntersecting(const qfVec2& _First, const qfVec2& _Last) const; 
+	const std::string getString() const; 
 
 	friend std::ostream& operator<<(std::ostream& _Os, const qfVec2& _Vec) {
-		_Os << _Vec.gString(); return _Os;
+		_Os << _Vec.getString(); return _Os;
 	}
 
 	/* This should not be used by user */

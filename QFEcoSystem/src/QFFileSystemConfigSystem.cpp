@@ -81,4 +81,20 @@ namespace qfFileSystem {
 		if (fs::is_regular_file(m_FilePath)) return true; 
 		return Open(m_FilePath).makeFile(true);
 	}
+
+	const bool ConfigSystem::clearFile() {
+		Open::IO FileIO(m_FilePath); 
+
+		Open::IO::BufferString dataToWrite = {
+			{}, Open::IO::BufferString::FlagEOL::CRLF
+		};
+		const bool clearResult = FileIO.writeBufferString(dataToWrite);
+
+		_qfAssert(clearResult, "Couldn't clear file");
+		return clearResult;
+	}
+
+	Path& ConfigSystem::getFilePath() {
+		return m_FilePath;
+	}
 }

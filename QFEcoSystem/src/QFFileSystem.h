@@ -39,6 +39,7 @@ namespace qfFileSystem {
 				const qfString getString(); 
 
 				static const qfString getEOL(FlagEOL _Flag);
+				FlagEOL getEOLFlag();
 			private:
 				FlagEOL m_EOLFlag; 
 				std::vector<qfString> m_BufferVector; 
@@ -49,7 +50,7 @@ namespace qfFileSystem {
 		
 			/* Bulk reading */
 			std::optional<BufferString> readBufferString(BufferString::FlagEOL _EOL, uint64_t _EstimatedLineCount = 0);
-			const bool writeBufferString(BufferString _Buffer);
+			const bool writeBufferString(BufferString _Buffer, bool _ChecksumsSha256 = true);
 
 		private:
 			Path m_Path; 
@@ -70,6 +71,8 @@ namespace qfFileSystem {
 		const bool createFile();
 		const bool loadCache();
 		const bool isCacheLoaded() const;
+		const bool clearFile();
+		Path& getFilePath(); 
 		void swapCache(const qfJson& _New);
 		qfJson& getCache(bool _AutoLoad = false);
 		const bool writeCache(int _Dump = 0, Open::IO::BufferString::FlagEOL _EOL = Open::IO::BufferString::FlagEOL::CRLF);

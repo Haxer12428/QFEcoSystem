@@ -37,7 +37,7 @@ float& qfColor::a() {
 	return m_Value.w;
 }
 
-const std::string qfColor::gString() const {
+const std::string qfColor::getString() const {
 	return fmt::format("qfColor({},{},{},{})", m_Value.x, m_Value.y, m_Value.z, m_Value.w);
 }
 qfColor::operator ImColor() const {
