@@ -153,8 +153,12 @@
     <ClInclude Include="src\QFCompare.h" />
     <ClInclude Include="src\QFDebug.h" />
     <ClInclude Include="src\QFDefines.h" />
+    <ClInclude Include="src\QFEncryption.h" />
     <ClInclude Include="src\QFFileSystem.h" />
+    <ClInclude Include="src\QFJson.h" />
+    <ClInclude Include="src\QFRect.h" />
     <ClInclude Include="src\QFShutdown.h" />
+    <ClInclude Include="src\QFString.h" />
     <ClInclude Include="src\QFSystem.h" />
     <ClInclude Include="src\QFTransform.h" />
     <ClInclude Include="src\QFVec2.h" />
@@ -162,11 +166,14 @@
   <ItemGroup>
     <ClCompile Include="src\QFColor.cpp" />
     <ClCompile Include="src\QFDebug.cpp" />
+    <ClCompile Include="src\QFEncryptionHash.cpp" />
     <ClCompile Include="src\QFFileSystem.cpp" />
+    <ClCompile Include="src\QFFileSystemConfigSystem.cpp" />
     <ClCompile Include="src\QFFilesystemOpen.cpp" />
     <ClCompile Include="src\QFFileSystemOpenIO.cpp" />
     <ClCompile Include="src\QFFilesystemOpenIOBufferString.cpp" />
     <ClCompile Include="src\QFFilesystemPath.cpp" />
+    <ClCompile Include="src\qfRect.cpp" />
     <ClCompile Include="src\QFSystem.cpp" />
     <ClCompile Include="src\QFTransform.cpp" />
     <ClCompile Include="src\QFVec2.cpp" />

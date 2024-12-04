@@ -18,8 +18,8 @@ namespace qfFileSystem
 	const bool Open::IO::writeBufferString(BufferString _Buffer) {
 		std::ofstream file(m_Path, std::ios::out | std::ios::binary);
 
-		if (!file) {
-			_qfLogIf(_qfDebugLevelCritical, _qfDebugLog(_qfDebugError, "Failed to write to a file"));
+		if (!file || file.is_open()) {
+			_qfLogIf(_qfDebugLevelCritical, _qfDebugLog(_qfDebugError, "Failed to open a file"));
 			return false; 
 		}
 

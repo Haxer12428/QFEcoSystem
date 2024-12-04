@@ -18,7 +18,7 @@ public:
 	qfVec2(float _x, float _y);
 	qfVec2(const glm::vec2& _Vec);
 
-	explicit inline operator glm::vec2() const;
+	inline operator glm::vec2() const;
 
 	qfVec2 operator+(const qfVec2& _Other) const; 
 	qfVec2 operator-(const qfVec2& _Other) const;

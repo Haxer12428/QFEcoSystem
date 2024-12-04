@@ -17,3 +17,18 @@ const std::string qfTransform::stringReplaceChar(const std::string& _String, cha
 		);
 	return strCopy;
 }
+
+const std::vector<std::string> qfTransform::stringToVectorStr(const std::string& _Str) {
+	/* Empty str case */
+	if (_Str.empty()) {};
+
+	std::stringstream ss(_Str);
+
+	std::vector<std::string> resultBuffer;
+	std::string currentBuffer; 
+	/* Transform */
+	while (std::getline(ss, currentBuffer)) {
+		resultBuffer.push_back(currentBuffer);
+	}
+	return resultBuffer;
+}

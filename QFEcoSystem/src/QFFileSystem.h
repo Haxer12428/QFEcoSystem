@@ -5,6 +5,8 @@
 #include <array>
 #include <vector>
 #include <optional>
+#include "QFString.h"
+#include "QFJson.h"
 
 namespace qfFileSystem {
 	class Path : public std::filesystem::path {
@@ -27,18 +29,19 @@ namespace qfFileSystem {
 				enum class FlagEOL : uint16_t {
 					CR = 0, 
 					CRLF = 1, 
-					LF = 2
+					LF = 2,
+					NONE = 3 
 				};
 			public:
 				BufferString(const std::vector<std::string>& _BufferVector, const FlagEOL& _EOLFlag);
 				
 				const std::vector<std::string>& getVectorString();
-				const std::string getString(); 
+				const qfString getString(); 
 
-				static const std::string getEOL(FlagEOL _Flag);
+				static const qfString getEOL(FlagEOL _Flag);
 			private:
 				FlagEOL m_EOLFlag; 
-				std::vector<std::string> m_BufferVector; 
+				std::vector<qfString> m_BufferVector; 
 				std::string m_BufferString; 
 			};
 		public:
@@ -58,5 +61,20 @@ namespace qfFileSystem {
 		const bool makeFile(bool _MakeDirs = false, bool _Override = false);
 	private:
 		Path m_Path;
+	};
+
+	class ConfigSystem {
+	public:
+		ConfigSystem(const Path& _FilePath);
+
+		const bool createFile();
+		const bool loadCache();
+		const bool isCacheLoaded() const;
+		void swapCache(const qfJson& _New);
+		qfJson& getCache(bool _AutoLoad = false);
+		const bool writeCache(int _Dump = 0, Open::IO::BufferString::FlagEOL _EOL = Open::IO::BufferString::FlagEOL::CRLF);
+	private:
+		qfJson m_JsonCache;
+		Path m_FilePath; 
 	};
 };

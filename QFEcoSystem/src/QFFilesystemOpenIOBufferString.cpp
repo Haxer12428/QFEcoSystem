@@ -11,7 +11,7 @@ namespace qfFileSystem {
 		return m_BufferVector;
 	}
 
-	const std::string Open::IO::BufferString::getString() {
+	const qfString Open::IO::BufferString::getString() {
 		/* Return cached string if already calculated or buffer is empty */
 		if (m_BufferVector.empty() || !m_BufferString.empty()) return m_BufferString;
 		const std::string currentEOL = getEOL(m_EOLFlag);
@@ -33,11 +33,11 @@ namespace qfFileSystem {
 	}
 
 	/* Get's -> Private */
-	const std::string Open::IO::BufferString::getEOL(FlagEOL _EOLFlag) {
+	const qfString Open::IO::BufferString::getEOL(FlagEOL _EOLFlag) {
 		return (_EOLFlag == FlagEOL::CR) ? "\r"    :
 			(_EOLFlag == FlagEOL::LF)      ? "\n"    :
 			(_EOLFlag == FlagEOL::CRLF)    ? "\r\n"  :
-			"\r\n"; 
+			""; 
 		/* Default case */
 	}
 }

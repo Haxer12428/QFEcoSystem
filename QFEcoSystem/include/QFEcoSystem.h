@@ -44,4 +44,16 @@
 /* qfJson
 	Custom json wrapper in case of implementing something into it later on (extension)  
 */
-using qfJson = nlohmann::json;
+#include "../src/QFJson.h"
+/* qfEncryption 
+	Simple encryption class, trying to make is as fast as possible
+*/
+#include "../src/QFEncryption.h"
+/* qfString 
+	Custom std::string wrapper in case of implementhing something later on 
+*/
+#include "../src/QFString.h"
+/* qfRect
+	Simple Rect class 
+*/
+#include "../src/QFRect.h"
