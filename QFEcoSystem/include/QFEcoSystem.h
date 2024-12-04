@@ -57,3 +57,7 @@
 	Simple Rect class 
 */
 #include "../src/QFRect.h"
+/* QFCall
+	From callbacks to eventsystems 
+*/
+#include "../src/QFCall.h"

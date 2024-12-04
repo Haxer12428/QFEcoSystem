@@ -149,6 +149,7 @@
   <ItemGroup>
     <ClInclude Include="include\QFEcoSystem.h" />
     <ClInclude Include="src\QFAssert.h" />
+    <ClInclude Include="src\QFCall.h" />
     <ClInclude Include="src\QFColor.h" />
     <ClInclude Include="src\QFCompare.h" />
     <ClInclude Include="src\QFDebug.h" />
