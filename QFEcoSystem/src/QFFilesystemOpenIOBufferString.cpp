@@ -1,10 +1,15 @@
 #include "QFFileSystem.h"
+#include "QFTransform.h"
 
 namespace qfFileSystem {
-	/* Constructor */
+	/* Constructors */
 	Open::IO::BufferString::BufferString(
 		const std::vector<std::string>& _BufferVector, const FlagEOL& _EOLFlag
 		) : m_BufferVector{_BufferVector}, m_EOLFlag{_EOLFlag} {}
+
+	Open::IO::BufferString::BufferString(
+		const std::string& _Buffer, const FlagEOL& _EOLFlag
+	) : m_BufferVector{ qfTransform::stringToVectorStr(_Buffer) }, m_EOLFlag{ _EOLFlag } {}
 
 	/* Get's -> Public */
 	const std::vector<std::string>& Open::IO::BufferString::getVectorString() {

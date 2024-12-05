@@ -61,3 +61,7 @@
 	From callbacks to eventsystems 
 */
 #include "../src/QFCall.h"
+/* QFAnim 
+	Simple Animation class 
+*/
+#include "../src/QFAnim.h"

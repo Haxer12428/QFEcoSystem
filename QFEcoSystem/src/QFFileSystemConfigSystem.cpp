@@ -85,9 +85,10 @@ namespace qfFileSystem {
 	const bool ConfigSystem::clearFile() {
 		Open::IO FileIO(m_FilePath); 
 
-		Open::IO::BufferString dataToWrite = {
-			{}, Open::IO::BufferString::FlagEOL::CRLF
-		};
+		Open::IO::BufferString dataToWrite = Open::IO::BufferString(
+			"", Open::IO::BufferString::FlagEOL::CRLF
+		);
+
 		const bool clearResult = FileIO.writeBufferString(dataToWrite);
 
 		_qfAssert(clearResult, "Couldn't clear file");

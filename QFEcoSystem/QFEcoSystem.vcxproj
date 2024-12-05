@@ -148,6 +148,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="include\QFEcoSystem.h" />
+    <ClInclude Include="src\QFAnim.h" />
     <ClInclude Include="src\QFAssert.h" />
     <ClInclude Include="src\QFCall.h" />
     <ClInclude Include="src\QFColor.h" />
@@ -156,6 +157,7 @@
     <ClInclude Include="src\QFDefines.h" />
     <ClInclude Include="src\QFEncryption.h" />
     <ClInclude Include="src\QFFileSystem.h" />
+    <ClInclude Include="src\QFIDManager.h" />
     <ClInclude Include="src\QFJson.h" />
     <ClInclude Include="src\QFRect.h" />
     <ClInclude Include="src\QFShutdown.h" />
@@ -165,6 +167,8 @@
     <ClInclude Include="src\QFVec2.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\QFAnimBasic.cpp" />
+    <ClCompile Include="src\QFCallClassEventSystem.cpp" />
     <ClCompile Include="src\QFColor.cpp" />
     <ClCompile Include="src\QFDebug.cpp" />
     <ClCompile Include="src\QFEncryptionHash.cpp" />
@@ -174,6 +178,7 @@
     <ClCompile Include="src\QFFileSystemOpenIO.cpp" />
     <ClCompile Include="src\QFFilesystemOpenIOBufferString.cpp" />
     <ClCompile Include="src\QFFilesystemPath.cpp" />
+    <ClCompile Include="src\QFIdManager.cpp" />
     <ClCompile Include="src\qfRect.cpp" />
     <ClCompile Include="src\QFSystem.cpp" />
     <ClCompile Include="src\QFTransform.cpp" />

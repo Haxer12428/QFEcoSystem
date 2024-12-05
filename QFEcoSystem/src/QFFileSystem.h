@@ -34,7 +34,8 @@ namespace qfFileSystem {
 				};
 			public:
 				BufferString(const std::vector<std::string>& _BufferVector, const FlagEOL& _EOLFlag);
-				
+				BufferString(const std::string& _BufferString, const FlagEOL& _EOLFlag);
+
 				const std::vector<std::string>& getVectorString();
 				const qfString getString(); 
 
