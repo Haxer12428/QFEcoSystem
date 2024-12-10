@@ -28,7 +28,7 @@ const std::string qfSystem::gClipboardData() {
   const std::string clipboardText = pszText;
   GlobalUnlock(handleData);
 
-  _qfLogIf(_qfDebugLevelRegular, _qfDebugLog(_qfDebugMessage, "success"));
+  
 
   return clipboardText;
 }

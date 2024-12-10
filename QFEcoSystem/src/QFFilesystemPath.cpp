@@ -14,7 +14,7 @@ namespace qfFileSystem {
 	const bool Path::isReservedDeviceName() const {
 		/* Goofy thing */
 		try {
-			fs::is_regular_file(this->string());
+			bool regularFile = fs::is_regular_file(this->string());
 			return false; 
 		}
 		catch (fs::filesystem_error&) { 
@@ -25,7 +25,7 @@ namespace qfFileSystem {
 		}
 		return false; 
 	}
-
+	
 	const bool Path::isSpecialDir() const {
 		HANDLE hFile = CreateFileA(
 			this->string().c_str(),

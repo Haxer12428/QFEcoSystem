@@ -1,4 +1,5 @@
 #pragma once
+#include <imgui.h>
 #include <glm/glm.hpp>
 #include <fmt/core.h>
 #include <ostream>
@@ -17,8 +18,9 @@ public:
 	qfVec2(float _both);
 	qfVec2(float _x, float _y);
 	qfVec2(const glm::vec2& _Vec);
-
+	
 	operator glm::vec2() const;
+	operator ImVec2() const { return ImVec2{ _x(), _y() }; };
 
 	qfVec2 operator+(const qfVec2& _Other) const; 
 	qfVec2 operator-(const qfVec2& _Other) const;

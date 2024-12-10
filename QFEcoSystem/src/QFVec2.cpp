@@ -1,5 +1,6 @@
 #include "QFVec2.h"
 #include <glm/vec2.hpp>
+#include "imgui.h"
 
 /* Constructors */
 qfVec2::qfVec2() : m_Data{ glm::vec2(0, 0) } {};

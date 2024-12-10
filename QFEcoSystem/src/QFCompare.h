@@ -3,7 +3,7 @@
 #include "QFAssert.h"
 
 class qfCompare {
-
+public:
 	/* Use this only on enum classes */
 	template<typename _Class> 
 	static const bool flagIsInEnumClassPool(_Class _Pool, _Class _Var) {

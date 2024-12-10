@@ -1,8 +1,10 @@
 #pragma once
+#include <type_traits>
 
 #ifndef NDEBUG
 	#define _qfDebugBuild
 #endif // !NDEBUG
+
 
 /* 
 	QF Debug Levels 0 - 3: 
@@ -16,7 +18,7 @@
 #define _qfDebugLevelImportant 2
 #define _qfDebugLevelCritical 3
 
-#define _qfDebugLevel _qfDebugLevelRegular
+#define _qfDebugLevel _qfDebugLevelCritical
 
 /* WARNING: prints self and upper levels -> Should not use this anymore!
 	If u see something like this in the code change this to _qfLogIf -> newer, clearer version of this
@@ -39,3 +41,22 @@
 
 /* Fancy string */
 #define _qfEmptyString ""
+
+#define _qfDontCareInt -3014
+
+#ifdef _qfBestPractises 
+	/* Using things like std::find, std::remove instead of for loops etc whenever I can, its not error prone
+		guarnatees good preformance, its actually easier to write, debug, and maintain 
+		It should be used like this from what im aware. Its also very easy to read and change to something else 
+		later on
+	*/
+#endif 
+
+
+/* Enum class bitwise operators */
+template <typename Enum>
+constexpr std::enable_if_t<std::is_enum_v<Enum>, Enum>
+operator|(Enum lhs, Enum rhs) {
+	using Underlying = std::underlying_type_t<Enum>;
+	return static_cast<Enum>(static_cast<Underlying>(lhs) | static_cast<Underlying>(rhs));
+}

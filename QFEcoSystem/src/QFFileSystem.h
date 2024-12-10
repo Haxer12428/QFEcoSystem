@@ -1,3 +1,4 @@
+#pragma once 
 #include "QFAssert.h"
 #include "QFDebug.h"
 #include "QFDefines.h"

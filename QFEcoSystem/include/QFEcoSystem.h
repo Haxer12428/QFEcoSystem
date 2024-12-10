@@ -65,3 +65,7 @@
 	Simple Animation class 
 */
 #include "../src/QFAnim.h"
+/* QF Stack 
+	Simple stacking system 
+*/
+#include "../src/QFStack.h"

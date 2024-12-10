@@ -24,6 +24,16 @@ float& qfRect::_y() { return m_Data.y; }
 float& qfRect::_sx() { return m_Data.z; }
 float& qfRect::_sy() { return m_Data.w; }
 
+void qfRect::setPosition(const qfVec2& _New) {
+  m_Data.x = _New._x(); 
+  m_Data.y = _New._y();
+}
+
+void qfRect::setSize(const qfVec2& _New) {
+  m_Data.z = _New._x();
+  m_Data.w = _New._y();
+}
+
 /* Operators -> convertions */
 qfRect::operator _qfRectInternalDataType() const {
 	return m_Data;

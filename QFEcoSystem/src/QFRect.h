@@ -5,6 +5,7 @@
 #include "QFString.h"
 #include <fmt/core.h>
 #include <ostream>
+#include "imgui.h"
 
 typedef glm::vec<4, float, glm::defaultp> _qfRectInternalDataType;
 
@@ -27,9 +28,13 @@ public:
 	float& _sx();
 	float& _sy();
 
+	void setPosition(const qfVec2& _New);
+	void setSize(const qfVec2& _New);
+
 	friend std::ostream& operator<<(std::ostream& _Os, const qfRect& _Rectangle) {
 		_Os << _Rectangle.getString(); return _Os;
 	}
+	
 
 	const bool isIntersecting(const qfRect& _Other); 
 
