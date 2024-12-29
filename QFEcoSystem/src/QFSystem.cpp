@@ -2,7 +2,7 @@
 #include <windows.h>
 
 /* Clipboard */
-const std::string qfSystem::gClipboardData() {
+const std::string qfSystem::getClipboardData() {
   if (!OpenClipboard(nullptr)) {
     _qfLogIf(_qfDebugLevelCritical, _qfDebugLog(_qfDebugWarning, "Could not open clipboard"));
     return _qfEmptyString;
@@ -33,7 +33,7 @@ const std::string qfSystem::gClipboardData() {
   return clipboardText;
 }
 
-const bool qfSystem::sClipboardData(const std::string& _Buffer) {
+const bool qfSystem::setClipboardData(const std::string& _Buffer) {
   /* Open & Empty */
   if (!OpenClipboard(nullptr)) {
     _qfDebugLog(_qfDebugWarning, "could not open clipboard");
@@ -84,4 +84,36 @@ const bool qfSystem::sClipboardData(const std::string& _Buffer) {
   _qfLogIf(_qfDebugLevelRegular, _qfDebugLog(_qfDebugMessage, "success"));
 
   return true;
+}
+
+std::vector<char> qfSystem::getImgDataFromEmbeddedResource(const std::string& _ResourceName) {
+
+  HRSRC hResInfo = FindResourceW(NULL,
+    std::wstring(_ResourceName.begin(), _ResourceName.end()).c_str(),
+    RT_RCDATA
+  ); /* Binary type */
+
+  _qfAssert(hResInfo != NULL, "Could not find resource");
+  if (hResInfo == NULL) 
+    return {};
+
+  DWORD resourceSize = SizeofResource(NULL, hResInfo);
+
+  if (resourceSize == 0)
+    return {};
+
+  /* Load resource into memory */
+  HGLOBAL resourceHandler = LoadResource(NULL, hResInfo);
+
+  _qfAssert(resourceHandler != NULL, "Failed to load resource");
+  if (resourceHandler == NULL)
+    return {};
+  
+  /* Lock resource and extract data from it */
+  const char* resourceData = static_cast<const char*>(LockResource(resourceHandler));
+
+  /* Get buffer into a vector */
+  std::vector<char> resourceBuffer(resourceData, resourceData + resourceSize);
+
+  return resourceBuffer;
 }

@@ -1,10 +1,13 @@
 #pragma once
 #include <type_traits>
+#include <chrono>
 
 #ifndef NDEBUG
 	#define _qfDebugBuild
 #endif // !NDEBUG
 
+/* Uncomment this for better debugging */
+#define _qfShutdownWithRuntimeError
 
 /* 
 	QF Debug Levels 0 - 3: 
@@ -18,7 +21,7 @@
 #define _qfDebugLevelImportant 2
 #define _qfDebugLevelCritical 3
 
-#define _qfDebugLevel _qfDebugLevelCritical
+#define _qfDebugLevel _qfDebugLevelImportant
 
 /* WARNING: prints self and upper levels -> Should not use this anymore!
 	If u see something like this in the code change this to _qfLogIf -> newer, clearer version of this
@@ -42,6 +45,10 @@
 /* Fancy string */
 #define _qfEmptyString ""
 
+/* Qf Error codes: basic */
+static constexpr const char* _qfViolationNullptrAccess = "Violation: Tried to access nullptr";
+static constexpr const char* _qfViolationNullptrArg = "Violation: Tried to pass nullptr argument";
+
 #define _qfDontCareInt -3014
 
 #ifdef _qfBestPractises 
@@ -52,6 +59,12 @@
 	*/
 #endif 
 
+/* qf Quality-Of-Life defines  */
+#define _qfQOL
+
+#ifdef _qfQOL 
+	using qfMs = std::chrono::milliseconds;
+#endif 
 
 /* Enum class bitwise operators */
 template <typename Enum>

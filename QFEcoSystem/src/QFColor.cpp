@@ -1,11 +1,25 @@
 #include "QFColor.h"
 #include <fmt/core.h>
+#include "QFAssert.h"
 
 /* Constructors */
+qfColor::qfColor() : m_Value{ 
+	glm::vec<4, float, glm::defaultp>(1.0f, 1.0f, 1.0f, 1.0f) 
+	} {};
+
 qfColor::qfColor(float _r, float _g, float _b, float _a)
 	: m_Value{ glm::vec<4, float, glm::defaultp>(_r, _g, _b, _a)  } {
 	normalize();
 }
+
+qfColor::qfColor(const std::vector<float>& _Vec)
+	{
+	_qfAssert(_Vec.size() >= 3, "Vector size doesn't fit");
+	m_Value = glm::vec<4, float, glm::defaultp>(_Vec[0], _Vec[1], _Vec[2], _Vec.size() >= 4 ? _Vec[3] : 1.0f);
+
+	normalize();
+}
+
 
 qfColor::qfColor(int _r, int _g, int _b, int _a)
 	: m_Value{ glm::vec<4, float, glm::defaultp>(static_cast<float>(_r), static_cast<float>(_g), static_cast<float>(_b), static_cast<float>(_a)) } {
@@ -42,4 +56,12 @@ const std::string qfColor::getString() const {
 }
 qfColor::operator ImColor() const {
 	return ImColor(m_Value.r, m_Value.g, m_Value.b, m_Value.a);
+}
+
+qfColor::operator ImU32() const {
+	return operator ImColor().operator ImU32();
+}
+
+qfColor::operator std::vector<float>() const {
+	return { m_Value.r, m_Value.g, m_Value.b, m_Value.a };
 }

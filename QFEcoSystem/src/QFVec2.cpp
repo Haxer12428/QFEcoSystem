@@ -7,6 +7,7 @@ qfVec2::qfVec2() : m_Data{ glm::vec2(0, 0) } {};
 qfVec2::qfVec2(float _both) : m_Data{ glm::vec2(_both, _both) } {}
 qfVec2::qfVec2(float _x, float _y) : m_Data{glm::vec2(_x, _y)} {}
 qfVec2::qfVec2(const glm::vec2& _Vec) : m_Data{ _Vec } {}
+qfVec2::qfVec2(ImVec2 _Vec) : m_Data { glm::vec2(_Vec.x, _Vec.y) } {}
 
 /* Overloads -> to type */
 qfVec2::operator glm::vec2() const { return m_Data; }
@@ -30,6 +31,20 @@ qfVec2 qfVec2::operator*(const qfVec2& _Other) const {
 }
 qfVec2 qfVec2::operator/(const qfVec2& _Other) const {
 	return (m_Data / _Other.m_Data);
+}
+
+qfVec2 qfVec2::operator+=(const qfVec2& _Other) {
+	m_Data[0] += _Other._x();
+	m_Data[1] += _Other._y();
+
+	return *this;
+}
+
+qfVec2 qfVec2::operator-=(const qfVec2& _Other) {
+	m_Data[0] -= _Other._x();
+	m_Data[1] -= _Other._y();
+
+	return *this;
 }
 
 /* Checks */

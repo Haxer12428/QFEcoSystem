@@ -59,6 +59,19 @@ namespace qfCall {
 			return generatedID; 
 		}
 
+		template<typename _ArgType>
+		uint64_t addFunctionToStack(const std::function<void(_ArgType&)>& _Function) {
+			static_assert(std::is_base_of<Args, _ArgType>::value,
+				"ArgType must be derived from ClassCallback::Args");
+
+			const uint64_t generatedId = m_IdManager->generate();
+
+			m_CallStack[typeid(_ArgType)].insert({ generatedId, [_Function](Args& _Arguments) {
+				_Function(dynamic_cast<_ArgType&>(_Arguments));
+				}});
+			return generatedId;
+		}
+
 		template<typename _ArgType> 
 		bool destroyFunction(uint64_t _ID) {
 			/* Assert base class */

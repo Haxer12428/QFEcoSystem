@@ -3,12 +3,15 @@
 #include <glm/glm.hpp>
 #include <ostream>
 #include <imgui.h>
+#include <vector>
 
 class qfColor {
 public:
+	qfColor();
 	qfColor(float _r, float _g, float _b, float _a);
 	qfColor(int _r, int _g, int _b, int _a);
-	
+	qfColor(const std::vector<float>& _Vec);
+
 	void normalize();
 
 	float& r();
@@ -17,6 +20,8 @@ public:
 	float& a();
 
 	operator ImColor() const; 
+	operator ImU32() const; 
+	operator std::vector<float>() const; 
 
 	const std::string getString() const; 
 

@@ -21,6 +21,7 @@ public:
 	qfVec2 getSize() const; 
 	qfVec2 getFinalPosition() const; 
 
+
 	const qfString getString() const;
 
 	float& _x(); 

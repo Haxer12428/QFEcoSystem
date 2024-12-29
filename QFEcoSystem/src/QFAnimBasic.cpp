@@ -1,4 +1,5 @@
 #include "QFAnim.h"
+#include <iostream>
 
 namespace chrono = std::chrono;
 using ccl = chrono::high_resolution_clock;
@@ -38,7 +39,7 @@ namespace qfAnim {
 
 	/* Checks */
 	const bool Basic::isFinished() const {
-		return (m_Cache == m_CacheWanted);
+		return getTimeDelta() >= _qfAnimBasicMaxDeltaTime;
 	}
 
 	/* Start */

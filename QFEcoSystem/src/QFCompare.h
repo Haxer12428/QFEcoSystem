@@ -16,3 +16,5 @@ public:
 		);
 	}
 };
+
+#define _qfCompareFlag qfCompare::flagIsInEnumClassPool

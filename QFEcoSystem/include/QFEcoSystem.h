@@ -69,3 +69,6 @@
 	Simple stacking system 
 */
 #include "../src/QFStack.h"
+
+#include "../src/QFTexture.h"
+#include "../src/qfFont.h"

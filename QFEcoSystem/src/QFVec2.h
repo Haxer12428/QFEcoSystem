@@ -15,6 +15,7 @@
 class qfVec2 {
 public:
 	qfVec2();
+	qfVec2(ImVec2 _Vec);
 	qfVec2(float _both);
 	qfVec2(float _x, float _y);
 	qfVec2(const glm::vec2& _Vec);
@@ -26,6 +27,9 @@ public:
 	qfVec2 operator-(const qfVec2& _Other) const;
 	qfVec2 operator*(const qfVec2& _Other) const;
 	qfVec2 operator/(const qfVec2& _Other) const;
+	qfVec2 operator+=(const qfVec2& _Other); 
+	qfVec2 operator-=(const qfVec2& _Other);
+
 
 	float _x() const; 
 	float _y() const; 

@@ -18,6 +18,7 @@ qfVec2 qfRect::getPosition() const { return qfVec2{ m_Data.x, m_Data.y }; }
 qfVec2 qfRect::getSize() const { return qfVec2{ m_Data.z, m_Data.w }; }
 qfVec2 qfRect::getFinalPosition() const { return (getPosition() + getSize()); }
 
+
 /* those are used for get and set */
 float& qfRect::_x() { return m_Data.x; }
 float& qfRect::_y() { return m_Data.y; }

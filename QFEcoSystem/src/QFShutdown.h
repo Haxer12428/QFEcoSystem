@@ -1,6 +1,11 @@
 #pragma once
+#include <stdexcept>
 #include "QFDefines.h"
 #include <fmt/core.h>
+
+/* 
+  check QFDefines.h for better assert||shutdown debugging 'settings' 
+*/
 
 /* 
   QF Shutdown's work only in debug mode 
@@ -16,12 +21,24 @@
     #define _qfShutdownMessage()
 #endif 
 
+//#define _qfShutdownWithRuntimeError
+
+#ifdef _qfShutdownWithRuntimeError
+  #define _qfShutdownExit() do { \
+    throw std::runtime_error("qfshutdown"); \
+  } while(0) 
+#else 
+  #define _qfShutdownExit() do { \
+       std::exit(EXIT_FAILURE); \
+  } while(0) 
+#endif 
+
 /* QF Shutdown */
 #ifdef _qfDebugBuild 
-    #define _qfShutdown() { \
+    #define _qfShutdown() do { \
             _qfShutdownMessage(); \
-            std::exit(EXIT_FAILURE); \
-        }
+            _qfShutdownExit(); \
+        } while (0)
 #else 
   #define _qfShutdown()
 #endif 
