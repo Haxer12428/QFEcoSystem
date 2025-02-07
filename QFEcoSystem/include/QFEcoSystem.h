@@ -72,3 +72,5 @@
 
 #include "../src/QFTexture.h"
 #include "../src/qfFont.h"
+#include "../src/qfTimeCounter.h"
+#include "../src/QFNetwork.h"

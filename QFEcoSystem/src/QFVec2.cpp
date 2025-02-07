@@ -19,6 +19,15 @@ const std::string qfVec2::getString() const {
 	return fmt::format("qfVec2({}, {})", m_Data.x, m_Data.y);
 }
 
+qfVec2 qfVec2::getDistance(const qfVec2& _Other) const {
+	const float distX = std::abs(_Other._x() - this->_x());
+	const float distY = std::abs(_Other._y() - this->_y());
+
+	return qfVec2{
+		distX, distY
+	};
+}
+
 /* Operators */
 qfVec2 qfVec2::operator+(const qfVec2& _Other) const {
 	return (m_Data + _Other.m_Data);

@@ -6,6 +6,8 @@
 #include <fmt/core.h>
 #include <ostream>
 #include "imgui.h"
+#include <Windows.h>
+#define NOMINMAX
 
 typedef glm::vec<4, float, glm::defaultp> _qfRectInternalDataType;
 
@@ -14,6 +16,7 @@ public:
 	qfRect();
 	qfRect(float _x, float _y, float _sx, float _sy);
 	qfRect(const qfVec2& _p1, const qfVec2& _size);
+	qfRect(const RECT& _WinRect);
 
 	virtual ~qfRect();
 

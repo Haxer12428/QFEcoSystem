@@ -24,13 +24,31 @@
 	there isn't 'universal' solution for this problem
 */
 
+/* Destructor wrap */
+struct _qfCallOnDestructWrap {
+	_qfCallOnDestructWrap(const std::function<_qfInternalVoid()>& _Func) : m_Callback{ _Func } {};
+	~_qfCallOnDestructWrap() { m_Callback(); }
+
+	std::function<_qfInternalVoid()> m_Callback;
+};
+
 namespace qfCall {
+
 	class ClassCallback {
 	public:
 		class Args {
 		public:
 			Args() = default;
 			virtual ~Args() = default;
+
+			void stopDispatch() {
+				m_DispatchStopped = true; 
+			}
+			bool isDispatchStopped() {
+				return m_DispatchStopped;
+			}
+		private:
+			bool m_DispatchStopped = false; 
 		};
 	public:
 		ClassCallback() = default; 
@@ -121,6 +139,10 @@ namespace qfCall {
 			/* Call */
 			for (const auto& _CallbackHandler : callIt->second) {
 				try {
+					if (reinterpret_cast<Args*>(&_Args)->isDispatchStopped()) {
+						return true; 
+					}
+
 					_CallbackHandler.second(_Args);
 				}
 				catch (const std::exception& ex) {

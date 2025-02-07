@@ -20,6 +20,10 @@ namespace qfFileSystem {
 		return m_EOLFlag;
 	}
 
+	long long Open::IO::BufferString::getLineCount() const {
+		return m_BufferVector.size();
+	};
+
 	const qfString Open::IO::BufferString::getString() {
 		/* Return cached string if already calculated or buffer is empty */
 		if (m_BufferVector.empty() || !m_BufferString.empty()) return m_BufferString;

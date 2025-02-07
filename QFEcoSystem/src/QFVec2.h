@@ -30,6 +30,7 @@ public:
 	qfVec2 operator+=(const qfVec2& _Other); 
 	qfVec2 operator-=(const qfVec2& _Other);
 
+	qfVec2 getDistance(const qfVec2& _Other) const; 
 
 	float _x() const; 
 	float _y() const; 

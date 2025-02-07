@@ -196,12 +196,14 @@
     <ClInclude Include="src\qfFont.h" />
     <ClInclude Include="src\QFIDManager.h" />
     <ClInclude Include="src\QFJson.h" />
+    <ClInclude Include="src\QFNetwork.h" />
     <ClInclude Include="src\QFRect.h" />
     <ClInclude Include="src\QFShutdown.h" />
     <ClInclude Include="src\QFStack.h" />
     <ClInclude Include="src\QFString.h" />
     <ClInclude Include="src\QFSystem.h" />
     <ClInclude Include="src\QFTexture.h" />
+    <ClInclude Include="src\qfTimeCounter.h" />
     <ClInclude Include="src\QFTransform.h" />
     <ClInclude Include="src\QFVec2.h" />
   </ItemGroup>
@@ -220,9 +222,11 @@
     <ClCompile Include="src\QFFilesystemPath.cpp" />
     <ClCompile Include="src\qfFont.cpp" />
     <ClCompile Include="src\QFIdManager.cpp" />
+    <ClCompile Include="src\QFNetwork.cpp" />
     <ClCompile Include="src\qfRect.cpp" />
     <ClCompile Include="src\QFSystem.cpp" />
     <ClCompile Include="src\QFTexture.cpp" />
+    <ClCompile Include="src\qfTimeCounter.cpp" />
     <ClCompile Include="src\QFTransform.cpp" />
     <ClCompile Include="src\QFVec2.cpp" />
   </ItemGroup>

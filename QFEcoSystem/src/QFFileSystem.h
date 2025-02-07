@@ -42,6 +42,8 @@ namespace qfFileSystem {
 
 				static const qfString getEOL(FlagEOL _Flag);
 				FlagEOL getEOLFlag();
+
+				long long getLineCount() const;
 			private:
 				FlagEOL m_EOLFlag; 
 				std::vector<qfString> m_BufferVector; 
@@ -83,3 +85,5 @@ namespace qfFileSystem {
 		Path m_FilePath; 
 	};
 };
+
+using _qfFileSystemOpenIOBufferStringFlagEOL = qfFileSystem::Open::IO::BufferString::FlagEOL;

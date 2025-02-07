@@ -117,3 +117,20 @@ std::vector<char> qfSystem::getImgDataFromEmbeddedResource(const std::string& _R
 
   return resourceBuffer;
 }
+
+qfSystem::AppBarInfo qfSystem::getAppBarInfo() {
+  APPBARDATA appbarData; 
+  appbarData.cbSize = sizeof(APPBARDATA);
+
+  AppBarInfo result;
+  if (!SHAppBarMessage(ABM_GETTASKBARPOS, &appbarData)) {
+    _qfLogIf(_qfDebugLevelCritical, _qfDebugLog(_qfDebugError, 
+      "Failed to extract appbar information")
+      );
+    return result; 
+  }
+  result.m_HWND = appbarData.hWnd;
+  result.m_Rect = qfRect(appbarData.rc);
+
+  return result;
+}

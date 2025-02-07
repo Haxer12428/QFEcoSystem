@@ -43,9 +43,14 @@ namespace qfStack {
 		}
 
 		void pushToDisassignmentStack(std::unique_ptr<_Class>& _Ptr) {
+			if (!_Ptr) return;
+
 			m_DisassignmentStack.push_back(_Ptr.get());
 		}
-		void pushToDisassignmentStack(_Class* _Ptr) { m_DisassignmentStack.push_back(_Ptr); }
+		void pushToDisassignmentStack(_Class* _Ptr) { 
+			if (!_Ptr) return; 
+			m_DisassignmentStack.push_back(_Ptr); 
+		}
 
 		std::vector<std::unique_ptr<_Class>>& getAssignmentStack() { return m_AssignmentStack; }
 		std::vector<_Class*>& getDisassignmentStack() { return m_DisassignmentStack; }

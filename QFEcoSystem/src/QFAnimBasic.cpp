@@ -58,7 +58,7 @@ namespace qfAnim {
 			ccl::now() - m_CacheStartedTime);
 
 		float timeDelta = (static_cast<float>(timeSinceStart.count()) / static_cast<float>(m_FinishIn.count()));
-		timeDelta = std::clamp(timeDelta, 0.0f, _qfAnimBasicMaxDeltaTime);
+		timeDelta = _qfSafeClamp(timeDelta, 0.0f, _qfAnimBasicMaxDeltaTime);
 
 		return timeDelta;
 	}

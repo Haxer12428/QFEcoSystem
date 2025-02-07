@@ -47,9 +47,13 @@
 
 /* Qf Error codes: basic */
 static constexpr const char* _qfViolationNullptrAccess = "Violation: Tried to access nullptr";
-static constexpr const char* _qfViolationNullptrArg = "Violation: Tried to pass nullptr argument";
+static constexpr const char* _qfViolationNullptrArg    = "Violation: Tried to pass nullptr argument";
+
+/* Uncomment this for extended features */
+//#define _qfDebugExtededFeatures 
 
 #define _qfDontCareInt -3014
+constexpr const int _qfUnassignedInt = -1; 
 
 #ifdef _qfBestPractises 
 	/* Using things like std::find, std::remove instead of for loops etc whenever I can, its not error prone
@@ -62,8 +66,27 @@ static constexpr const char* _qfViolationNullptrArg = "Violation: Tried to pass 
 /* qf Quality-Of-Life defines  */
 #define _qfQOL
 
+/* its quality of life but important to whole gui engine */
+template <typename T>
+constexpr T _qfSafeClamp(const T & _Value, const T & _Min, const T & _Max) {
+	static_assert(std::is_arithmetic_v<T>, "T must be a number type.");
+	return (_Value < _Min) ? _Min : (_Value > _Max) ? _Max : _Value;
+}
+
+
+/* qf Read-Helper defines */
+#define _qfInternalVoid void
+
 #ifdef _qfQOL 
+#include <memory>
+#include <functional>
 	using qfMs = std::chrono::milliseconds;
+
+	template <typename _Type> std::unique_ptr<_Type> 
+	_qfCloneUniquePtr(std::unique_ptr<_Type>&_Original) {
+		if (!_Original) return nullptr; 
+		return std::make_unique<_Type>(*_Original);
+	}
 #endif 
 
 /* Enum class bitwise operators */
@@ -73,3 +96,4 @@ operator|(Enum lhs, Enum rhs) {
 	using Underlying = std::underlying_type_t<Enum>;
 	return static_cast<Enum>(static_cast<Underlying>(lhs) | static_cast<Underlying>(rhs));
 }
+

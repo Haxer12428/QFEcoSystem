@@ -10,6 +10,15 @@ qfRect::qfRect(float _x, float _y, float _sx, float _sy) :
 qfRect::qfRect(const qfVec2& _p1, const qfVec2& _size)
 	: m_Data{ _qfRectInternalDataType(_p1._x(), _p1._y(), _size._x(), _size._y()) } {};
 
+qfRect::qfRect(const RECT& _WinRect) 
+  : m_Data{ _qfRectInternalDataType(
+    static_cast<float>(_WinRect.left), // x 
+    static_cast<float>(_WinRect.top),  // y
+    static_cast<float>(_WinRect.right  - _WinRect.left), // sx
+    static_cast<float>(_WinRect.bottom - _WinRect.top)   // sy
+  )}
+{}
+
 /* Destructor */
 qfRect::~qfRect() = default; 
 
