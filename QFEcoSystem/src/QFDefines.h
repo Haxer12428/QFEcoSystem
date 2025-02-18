@@ -76,6 +76,8 @@ constexpr T _qfSafeClamp(const T & _Value, const T & _Min, const T & _Max) {
 
 /* qf Read-Helper defines */
 #define _qfInternalVoid void
+#define _qfInternalHelper [[maybe_unused]]
+#define _qfInternal [[maybe_unused]]
 
 #ifdef _qfQOL 
 #include <memory>

@@ -24,8 +24,11 @@ public:
 	qfVec2 getSize() const; 
 	qfVec2 getFinalPosition() const; 
 
-
 	const qfString getString() const;
+	
+	void shiftAndShrink(float _By);
+	void shiftAndShrinkByScale(float _By);
+	void scaleSize(float _Scale);
 
 	float& _x(); 
 	float& _y(); 

@@ -22,6 +22,7 @@ public:
 	operator ImColor() const; 
 	operator ImU32() const; 
 	operator std::vector<float>() const; 
+	operator ImVec4() const;
 
 	const std::string getString() const; 
 

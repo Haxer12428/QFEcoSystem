@@ -65,3 +65,7 @@ qfColor::operator ImU32() const {
 qfColor::operator std::vector<float>() const {
 	return { m_Value.r, m_Value.g, m_Value.b, m_Value.a };
 }
+
+qfColor::operator ImVec4() const {
+	return { m_Value.r, m_Value.g, m_Value.b, m_Value.a };
+}

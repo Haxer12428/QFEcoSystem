@@ -44,6 +44,26 @@ void qfRect::setSize(const qfVec2& _New) {
   m_Data.w = _New._y();
 }
 
+void qfRect::shiftAndShrink(float _By) {
+	m_Data.x += _By;
+	m_Data.y += _By;
+	m_Data.z -= _By * 2; 
+	m_Data.w -= _By * 2;
+}
+
+void qfRect::shiftAndShrinkByScale(float _Scale) {
+	m_Data.x *= _Scale;
+	m_Data.y *= _Scale; 
+
+	m_Data.z *= (_Scale);
+	m_Data.w *= (_Scale);
+}
+
+void qfRect::scaleSize(float _Scale) {
+	m_Data.z *= (_Scale);
+	m_Data.w *= (_Scale);
+}
+
 /* Operators -> convertions */
 qfRect::operator _qfRectInternalDataType() const {
 	return m_Data;
